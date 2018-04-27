@@ -64,6 +64,7 @@ class Auth::SessionsController < Devise::SessionsController
     end
 
     super
+    root_path
   end
 
   def two_factor_enabled?

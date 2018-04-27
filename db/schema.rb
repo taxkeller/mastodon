@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304013859) do
+ActiveRecord::Schema.define(version: 20180427023059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "account_domain_blocks", force: :cascade do |t|
     t.string "domain"
@@ -353,6 +354,16 @@ ActiveRecord::Schema.define(version: 20180304013859) do
     t.bigint "preview_card_id", null: false
     t.bigint "status_id", null: false
     t.index ["status_id", "preview_card_id"], name: "index_preview_cards_statuses_on_status_id_and_preview_card_id"
+  end
+
+  create_table "report_notes", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "report_id", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_report_notes_on_account_id"
+    t.index ["report_id"], name: "index_report_notes_on_report_id"
   end
 
   create_table "reports", force: :cascade do |t|

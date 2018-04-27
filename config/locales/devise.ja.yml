@@ -14,13 +14,13 @@ ja:
       not_found_in_database: "%{authentication_keys}かパスワードが誤っています。"
       timeout: セッションの有効期限が切れました。続行するには再度ログインしてください。
       unauthenticated: 続行するにはログインするか、アカウントを作成してください。
-      unconfirmed: 続行するにはメールアドレスを確認する必要があります。
+      unconfirmed: 管理人があなたのFacebookアカウントを確認しています。参加が承認されるまでもうしばらくお待ちください。
     mailer:
       confirmation_instructions:
         action: メールアドレスの確認
-        explanation: このメールアドレスで%{host}にアカウントを作成しました。有効にするまであと一歩です。もし心当たりがない場合、申し訳ありませんがこのメールを無視してください。
+        explanation: このメールアドレスで%{host}にアカウントを作成しました。管理人があなたのアカウント情報を確認しています。もし心当たりがない場合、申し訳ありませんがこのメールを無視してください。
         extra_html: また <a href="%{terms_path}">インスタンスのルール</a> と <a href="%{policy_path}">利用規約</a> もお読みください。
-        subject: 'Mastodon: メールアドレスの確認'
+        subject: 'Mastodon: アカウント仮登録のお知らせ'
         title: メールアドレスの確認
       email_changed:
         explanation: 'アカウントのメールアドレスは以下のように変更されます:'

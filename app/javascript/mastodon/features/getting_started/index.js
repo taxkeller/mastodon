@@ -15,7 +15,6 @@ const messages = defineMessages({
   heading: { id: 'getting_started.heading', defaultMessage: 'Getting started' },
   home_timeline: { id: 'tabs_bar.home', defaultMessage: 'Home' },
   notifications: { id: 'tabs_bar.notifications', defaultMessage: 'Notifications' },
-  public_timeline: { id: 'navigation_bar.public_timeline', defaultMessage: 'Federated timeline' },
   navigation_subheading: { id: 'column_subheading.navigation', defaultMessage: 'Navigation' },
   settings_subheading: { id: 'column_subheading.settings', defaultMessage: 'Settings' },
   community_timeline: { id: 'navigation_bar.community_timeline', defaultMessage: 'Local timeline' },
@@ -91,10 +90,6 @@ export default class GettingStarted extends ImmutablePureComponent {
       if (!columns.find(item => item.get('id') === 'COMMUNITY')) {
         navItems.push(<ColumnLink key='2' icon='users' text={intl.formatMessage(messages.community_timeline)} to='/timelines/public/local' />);
       }
-
-      if (!columns.find(item => item.get('id') === 'PUBLIC')) {
-        navItems.push(<ColumnLink key='3' icon='globe' text={intl.formatMessage(messages.public_timeline)} to='/timelines/public' />);
-      }
     }
 
     navItems.push(
@@ -133,7 +128,7 @@ export default class GettingStarted extends ImmutablePureComponent {
             <FormattedMessage
               id='getting_started.open_source_notice'
               defaultMessage='Mastodon is open source software. You can contribute or report issues on GitHub at {github}.'
-              values={{ github: <a href='https://github.com/tootsuite/mastodon' rel='noopener' target='_blank'>tootsuite/mastodon</a> }}
+              values={{ github: <a href='https://github.com/taxkeller/mastodon' rel='noopener' target='_blank'>tootsuite/mastodon</a> }}
             />
           </p>
         </div>

@@ -303,6 +303,37 @@ class User < ApplicationRecord
     super
   end
 
+  def self.from_omniauth(auth)
+    user = User.where(email: auth.info.email).first
+    if user
+      return user
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        fb_info = self.fetch_fb_info(auth.credentials.token)
+        user.email = fb_info['email']
+        user.password = Devise.friendly_token[0,20]
+        user.uid = auth.uid
+        user.provider = auth.provider
+
+        account = Account.new
+        account.username = fb_info['email'].split('@')[0].tr('-.', '')
+        account.fields = [{ name: 'Facebook', value: fb_info['link'] }]
+        account.display_name = auth.info.name
+        account.avatar_remote_url = auth.info.image
+        account.user = user
+        if !account.save
+          Rails.logger.error(account.errors.full_messages)
+        end
+      end
+    end
+  end
+
+  def self.fetch_fb_info(token)
+    http = HttpService.new.call("#{ENV['FACEBOOK_API']}?fields=email,link&access_token=#{token}")
+    body = JSON.parse http.body
+    body
+  end
+
   protected
 
   def send_devise_notification(notification, *args)

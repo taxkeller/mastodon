@@ -1,6 +1,6 @@
 require Rails.root.join('lib', 'mastodon', 'migration_helpers')
 
-class AddColumnToUsersForFacebook < ActiveRecord::Migration[5.2]
+class AddColumnToUsersForFacebook < ActiveRecord::Migration[5.0]
   include Mastodon::MigrationHelpers
 
   disable_ddl_transaction!

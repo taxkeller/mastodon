@@ -17,7 +17,6 @@ class UserMailer < Devise::Mailer
 
     I18n.with_locale(@resource.locale || I18n.default_locale) do
       mail to: @resource.unconfirmed_email.blank? ? @resource.email : @resource.unconfirmed_email,
-           #cc: 'kerarara@gmail.com',
            subject: I18n.t(@resource.pending_reconfirmation? ? 'devise.mailer.reconfirmation_instructions.subject' : 'devise.mailer.confirmation_instructions.subject', instance: @instance),
            template_name: @resource.pending_reconfirmation? ? 'reconfirmation_instructions' : 'confirmation_instructions'
     end

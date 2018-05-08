@@ -16,8 +16,5 @@
 
     = f.input :header, wrapper: :with_label, input_html: { accept: AccountHeader::IMAGE_MIME_TYPES.join(',') }, hint: t('simple_form.hints.defaults.header')
 
-  .fields-group
-    = f.input :locked, as: :boolean, wrapper: :with_label, hint: t('simple_form.hints.defaults.locked')
-
   .actions
     = f.button :button, t('generic.save_changes'), type: :submit

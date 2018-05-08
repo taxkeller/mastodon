@@ -86,10 +86,6 @@ export default class GettingStarted extends ImmutablePureComponent {
       if (!columns.find(item => item.get('id') === 'NOTIFICATIONS')) {
         navItems.push(<ColumnLink key='1' icon='bell' text={intl.formatMessage(messages.notifications)} badge={badgeDisplay(unreadNotifications)} to='/notifications' />);
       }
-
-      if (!columns.find(item => item.get('id') === 'COMMUNITY')) {
-        navItems.push(<ColumnLink key='2' icon='users' text={intl.formatMessage(messages.community_timeline)} to='/timelines/public/local' />);
-      }
     }
 
     navItems.push(
@@ -121,9 +117,6 @@ export default class GettingStarted extends ImmutablePureComponent {
         </div>
 
         <div className='static-content getting-started'>
-          <p>
-            <a href='https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/FAQ.md' rel='noopener' target='_blank'><FormattedMessage id='getting_started.faq' defaultMessage='FAQ' /></a> • <a href='https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/User-guide.md' rel='noopener' target='_blank'><FormattedMessage id='getting_started.userguide' defaultMessage='User Guide' /></a> • <a href='https://github.com/tootsuite/documentation/blob/master/Using-Mastodon/Apps.md' rel='noopener' target='_blank'><FormattedMessage id='getting_started.appsshort' defaultMessage='Apps' /></a>
-          </p>
           <p>
             <FormattedMessage
               id='getting_started.open_source_notice'
